@@ -9,8 +9,14 @@ get_filename_component(qt_bin_dir "${qmake_executable}" DIRECTORY)
 find_program(WINDEPLOYQT_EXECUTABLE windeployqt HINTS "${qt_bin_dir}")
 message(STATUS "WINDEPLOYQT_EXECUTABLE is ${WINDEPLOYQT_EXECUTABLE}")
 
+if (CMAKE_BUILD_TYPE STREQUAL "Debug")
+    set(deploy_v --debug)
+else()
+    set(deploy_v --release)
+endif()
+
 add_custom_command(
     TARGET ${CMAKE_PROJECT_NAME}
     POST_BUILD
-    COMMAND ${WINDEPLOYQT_EXECUTABLE} --qmldir ${CMAKE_CURRENT_SOURCE_DIR}/../ui $<TARGET_FILE:${CMAKE_PROJECT_NAME}>
+    COMMAND ${WINDEPLOYQT_EXECUTABLE} ${deploy_v} --qmldir ${CMAKE_CURRENT_SOURCE_DIR}/../ui $<TARGET_FILE:${CMAKE_PROJECT_NAME}>
 )
