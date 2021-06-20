@@ -16,4 +16,10 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
 enable_testing()
 
+if (CMAKE_BUILD_TYPE STREQUAL "Debug")
+    set(build_type debug)
+else()
+    set(build_type release)
+endif()
+
 add_subdirectory(src)

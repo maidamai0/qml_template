@@ -4,7 +4,7 @@
 <context>
     <name>main</name>
     <message>
-        <location filename="qml/main.qml" line="8"/>
+        <location filename="qml/main.qml" line="10"/>
         <source>Scroll</source>
         <translation type="unfinished"></translation>
     </message>
